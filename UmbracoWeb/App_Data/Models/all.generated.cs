@@ -8,8 +8,8 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "d253e4c9c67896ac")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "a5ce341049344854")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.5")]
 
 
 // FILE: models.generated.cs
@@ -1366,6 +1366,50 @@ namespace Umbraco.Web.PublishedContentModels
 		public string ArticleTitle
 		{
 			get { return this.GetPropertyValue<string>("articleTitle"); }
+		}
+	}
+
+	/// <summary>Article Item Test</summary>
+	[PublishedContentModel("articleItemTest")]
+	public partial class ArticleItemTest : PublishedContentModel
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "articleItemTest";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ArticleItemTest(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ArticleItemTest, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Article Item Test Content
+		///</summary>
+		[ImplementPropertyType("articleItemTestContent")]
+		public IHtmlString ArticleItemTestContent
+		{
+			get { return this.GetPropertyValue<IHtmlString>("articleItemTestContent"); }
+		}
+
+		///<summary>
+		/// Article Item Test Title
+		///</summary>
+		[ImplementPropertyType("articleItemTestTitle")]
+		public string ArticleItemTestTitle
+		{
+			get { return this.GetPropertyValue<string>("articleItemTestTitle"); }
 		}
 	}
 
