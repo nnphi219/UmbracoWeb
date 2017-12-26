@@ -8,8 +8,8 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "a5ce341049344854")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.5")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "eff9c27f38699db0")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 
 // FILE: models.generated.cs
@@ -1410,6 +1410,103 @@ namespace Umbraco.Web.PublishedContentModels
 		public string ArticleItemTestTitle
 		{
 			get { return this.GetPropertyValue<string>("articleItemTestTitle"); }
+		}
+	}
+
+	/// <summary>Contact Page</summary>
+	[PublishedContentModel("contactPage")]
+	public partial class ContactPage : PublishedContentModel
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "contactPage";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ContactPage(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ContactPage, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Contact Page Title
+		///</summary>
+		[ImplementPropertyType("contactPageTitle")]
+		public string ContactPageTitle
+		{
+			get { return this.GetPropertyValue<string>("contactPageTitle"); }
+		}
+
+		///<summary>
+		/// Site Name
+		///</summary>
+		[ImplementPropertyType("siteName")]
+		public string SiteName
+		{
+			get { return this.GetPropertyValue<string>("siteName"); }
+		}
+	}
+
+	/// <summary>Contact Formula</summary>
+	[PublishedContentModel("contactFormula")]
+	public partial class ContactFormula : PublishedContentModel
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "contactFormula";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ContactFormula(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ContactFormula, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Contact Message
+		///</summary>
+		[ImplementPropertyType("contactMessage")]
+		public IHtmlString ContactMessage
+		{
+			get { return this.GetPropertyValue<IHtmlString>("contactMessage"); }
+		}
+
+		///<summary>
+		/// Contact Name
+		///</summary>
+		[ImplementPropertyType("contactName")]
+		public string ContactName
+		{
+			get { return this.GetPropertyValue<string>("contactName"); }
+		}
+
+		///<summary>
+		/// Email From
+		///</summary>
+		[ImplementPropertyType("emailFrom")]
+		public string EmailFrom
+		{
+			get { return this.GetPropertyValue<string>("emailFrom"); }
 		}
 	}
 

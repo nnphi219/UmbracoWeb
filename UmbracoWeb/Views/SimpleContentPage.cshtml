@@ -1,13 +1,17 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.SimpleContentPage>
 @using ContentModels = Umbraco.Web.PublishedContentModels;
+@using UmbracoWeb.Controllers
 @{
-	Layout = "Master1.cshtml";
+    Layout = "Master1.cshtml";
 }
-<div id="main-container">
-    <div id="main" class="wrapper clearfix">
-        <section>
-            <h2>@Umbraco.Field("pageTitle")</h2>
-            <p>@Umbraco.Field("bodyText")</p>
-        </section>  
-    </div> <!-- #main -->
-</div> <!-- #main-container -->
+@using (Html.BeginUmbracoForm<SimpleContentController>("HandleFormPost"))
+{
+    <div id="main-container">
+        <div id="main" class="wrapper clearfix">
+            <section>
+                <h2>@Umbraco.Field("pageTitle")</h2>
+                <p>@Umbraco.Field("bodyText")</p>
+            </section>
+        </div> <!-- #main -->
+    </div> <!-- #main-container -->
+}
